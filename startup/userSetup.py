@@ -16,6 +16,7 @@ It sets up the Toolkit context and prepares the tk-maya engine.
 import os
 import maya.OpenMaya as OpenMaya
 import maya.cmds as cmds
+import maya.mel as mel
 import sys
 
 print "-----------CFA SHOTGUN PIPELINE------------."
@@ -90,6 +91,7 @@ def start_toolkit_with_plugins():
             load_path = os.path.join(plugin_path, "plugins")
         else:
             load_path = plugin_path
+        print "awefawef:", load_path
 
         # Load the plugins from the resolved path individually, as the
         # loadPlugin Maya command has difficulties loading all (*) plugins
@@ -164,6 +166,9 @@ def start_toolkit():
     import menuParse
     menuParse.main()
     autoLoadPlugin()
+    cmd = "print \"load deadline...\";if( startsWith( `whatIs DeadlineMayaClient`, \"Mel procedure found in\" ) ){ DeadlineMayaClient(); }else{ warning( \"DeadlineMayaClient either has errors or has not been installed.\" ); }"
+    mel.eval(cmd)
+
 def autoLoadPlugin():
     # AbcExport.mll
     # AbcImport.mll
