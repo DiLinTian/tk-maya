@@ -21,7 +21,7 @@ import sys
 
 print "-----------CFA SHOTGUN PIPELINE------------."
 # add custom env
-env_path = r'P:\cfa_tools\cfa_plug-ins\cfa_tools'
+env_path = r'F:\Pipeline_Tools\HS-tools'
 sys.path.append(env_path)
 import env_parse
 env_parse.addCfaPath()
